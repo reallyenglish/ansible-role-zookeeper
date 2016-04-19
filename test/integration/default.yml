@@ -1,0 +1,10 @@
+- hosts: all
+  roles:
+    - ansible-role-zookeeper
+  vars:
+    zookeeper_config: |
+      tickTime=3000
+      initLimit=10
+      syncLimit=5
+      dataDir=/var/db/zookeeper
+      clientPort=2181

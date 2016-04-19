@@ -1,0 +1,46 @@
+---
+# tasks file for ansible-role-zookeeper
+
+- include_vars: "{{ ansible_os_family }}.yml"
+
+- include: install-FreeBSD.yml
+  when: ansible_os_family == 'FreeBSD'
+
+- name: Create log directory
+  file:
+    path: "{{ zookeeper_log_dir }}"
+    mode: 0755
+    owner: "{{ zookeeper_user }}"
+    group: "{{ zookeeper_group }}"
+    state: directory
+  notify: Restart zookeeper
+
+- name: Create db directory
+  file:
+    path: "{{ zookeeper_db_dir }}"
+    mode: 0755
+    owner: "{{ zookeeper_user }}"
+    group: "{{ zookeeper_group }}"
+    state: directory
+  notify: Restart zookeeper
+
+- name: Create conf directory
+  file:
+    path: "{{ zookeeper_conf_dir }}"
+    mode: 0755
+    owner: "{{ zookeeper_user }}"
+    group: "{{ zookeeper_group }}"
+    state: directory
+  notify: Restart zookeeper
+
+- name: Create zoo.cfg
+  template:
+    src: zoo.cfg.j2
+    dest: "{{ zookeeper_conf }}"
+  notify: Restart zookeeper
+
+- name: Start zookeeper
+  service:
+    name: "{{ zookeeper_service }}"
+    enabled: true
+    state: started

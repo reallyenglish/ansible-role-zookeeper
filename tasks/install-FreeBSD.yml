@@ -1,0 +1,5 @@
+---
+- name: Install zookeeper
+  pkgng:
+    name: zookeeper
+    state: present

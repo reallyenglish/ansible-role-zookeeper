@@ -1,0 +1,6 @@
+---
+
+- name: Restart CHANGEME_config
+  service:
+    name: CHANGEME
+    status: restarted

@@ -1,0 +1,3 @@
+__zookeeper_db_dir: /var/db/zookeeper
+__zookeeper_conf_dir: /usr/local/etc/zookeeper
+__zookeeper_conf: /usr/local/etc/zookeeper/zoo.cfg

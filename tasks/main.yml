@@ -39,6 +39,13 @@
     dest: "{{ zookeeper_conf }}"
   notify: Restart zookeeper
 
+- name: Create myid
+  template:
+    src: myid.j2
+    dest: "{{ zookeeper_db_dir }}/myid"
+  when: "{{ zookeeper_myid }}"
+  notify: Restart zookeeper
+
 - name: Start zookeeper
   service:
     name: "{{ zookeeper_service }}"

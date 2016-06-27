@@ -22,6 +22,7 @@ Role Variables
 | zookeeper\_conf\_dir | path to config directory | "{{ \_\_zookeeper\_conf\_dir }}" |
 | zookeeper\_flags     | (not used yet ) | "" |
 | zookeeper\_config     | content of zoo.cfg | "" |
+| zookeeper\_myid      | myid of the zookeeper | false |
 
 
 Dependencies
@@ -38,6 +39,7 @@ Including an example of how to use your role (for instance, with variables passe
       roles:
         - ansible-role-zookeeper
       vars:
+        zookeeper_myid: 1
         zookeeper_config: |
           tickTime=3000
           initLimit=10

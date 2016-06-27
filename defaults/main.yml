@@ -7,4 +7,5 @@ zookeeper_conf: "{{ __zookeeper_conf }}"
 zookeeper_conf_dir: "{{ __zookeeper_conf_dir }}"
 zookeeper_flags: ""
 
+zookeeper_myid: false
 zookeeper_config: ""

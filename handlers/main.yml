@@ -1,6 +1,6 @@
 ---
 
-- name: Restart CHANGEME_config
+- name: Restart zookeeper
   service:
-    name: CHANGEME
+    name: "{{ zookeeper_service }}"
     status: restarted

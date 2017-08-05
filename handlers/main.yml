@@ -3,4 +3,4 @@
 - name: Restart zookeeper
   service:
     name: "{{ zookeeper_service }}"
-    status: restarted
+    state: restarted

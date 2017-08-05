@@ -43,7 +43,8 @@
   template:
     src: myid.j2
     dest: "{{ zookeeper_db_dir }}/myid"
-  when: "{{ zookeeper_myid }}"
+  when:
+    - zookeeper_myid is defined
   notify: Restart zookeeper
 
 - name: Start zookeeper

@@ -1,39 +1,39 @@
-require 'spec_helper'
-require 'serverspec'
+require "spec_helper"
+require "serverspec"
 
-package = 'zookeeper'
-service = 'zookeeper'
-config  = '/etc/zookeeper/zoo.conf'
-user    = 'zookeeper'
-group   = 'zookeeper'
-ports   = [ 2181 ]
-log_dir = '/var/log/zookeeper'
-db_dir  = '/var/lib/zookeeper'
+package = "zookeeper"
+service = "zookeeper"
+config  = "/etc/zookeeper/zoo.conf"
+user    = "zookeeper"
+group   = "zookeeper"
+ports   = [2181]
+log_dir = "/var/log/zookeeper"
+db_dir  = "/var/lib/zookeeper"
 
 case os[:family]
-when 'freebsd'
-  config = '/usr/local/etc/zookeeper/zoo.cfg'
-  db_dir = '/var/db/zookeeper'
+when "freebsd"
+  config = "/usr/local/etc/zookeeper/zoo.cfg"
+  db_dir = "/var/db/zookeeper"
 end
 
-myid = "#{ db_dir }/myid"
+myid = "#{db_dir}/myid"
 
 describe package(package) do
   it { should be_installed }
-end 
+end
 
 describe file(config) do
   it { should be_file }
-  its(:content) { should match /tickTime=3000/ }
-  its(:content) { should match /initLimit=10/ }
-  its(:content) { should match /syncLimit=5/ }
-  its(:content) { should match Regexp.escape('dataDir=/var/db/zookeeper') }
-  its(:content) { should match /clientPort=2181/ }
+  its(:content) { should match(/tickTime=3000/) }
+  its(:content) { should match(/initLimit=10/) }
+  its(:content) { should match(/syncLimit=5/) }
+  its(:content) { should match Regexp.escape("dataDir=/var/db/zookeeper") }
+  its(:content) { should match(/clientPort=2181/) }
 end
 
 describe file(myid) do
   it { should be_file }
-  its(:content) { should match /1/ }
+  its(:content) { should match(/^1$/) }
 end
 
 describe file(log_dir) do

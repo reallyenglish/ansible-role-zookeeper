@@ -3,7 +3,7 @@ zookeeper_group: zookeeper
 zookeeper_log_dir: /var/log/zookeeper
 zookeeper_db_dir: "{{ __zookeeper_db_dir }}"
 zookeeper_service: zookeeper
-zookeeper_conf: "{{ __zookeeper_conf }}"
+zookeeper_conf: "{{ zookeeper_conf_dir }}/zoo.cfg"
 zookeeper_conf_dir: "{{ __zookeeper_conf_dir }}"
 zookeeper_flags: ""
 

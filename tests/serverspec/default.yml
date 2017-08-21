@@ -2,6 +2,9 @@
   roles:
     - ansible-role-zookeeper
   vars:
+    java_packages:
+      # XXX this must match the one zookeeper depends on
+      - java/openjdk7
     zookeeper_myid: 1
     zookeeper_config: |
       tickTime=3000

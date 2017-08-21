@@ -23,5 +23,5 @@ galaxy_info:
 
   galaxy_tags:
     - zookeeper
-#dependencies:
-#  - { role: username.common, some_parameter: 3 }
+dependencies:
+  - { role: reallyenglish.java }

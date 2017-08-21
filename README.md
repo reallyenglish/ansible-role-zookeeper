@@ -30,17 +30,18 @@ None
 
 # Dependencies
 
-None
+- `reallyenglish.java`
 
 # Example Playbook
-
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
 ```yaml
 - hosts: all
   roles:
     - ansible-role-zookeeper
   vars:
+    java_packages:
+      # XXX this must match the one zookeeper depends on
+      - java/openjdk7
     zookeeper_myid: 1
     zookeeper_config: |
       tickTime=3000
